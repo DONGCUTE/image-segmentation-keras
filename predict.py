@@ -31,7 +31,7 @@ modelFN = modelFns[ model_name ]
 m = modelFN( n_classes , input_height=input_height, input_width=input_width   )
 m.load_weights(  args.save_weights_path + "." + str(  epoch_number )  )
 m.compile(loss='mean_squared_error',
-      optimizer= 'adam' ,
+      optimizer= 'adagrad' ,
       metrics=['accuracy'])
 
 
@@ -52,7 +52,7 @@ for imgName in images:
 	seg_img = np.zeros( ( output_height , output_width , 3  ) )
 	for i in range(output_width):
 		for j in range(output_height):
-			if pr[i][j] >0.5:
+			if pr[i][j] >0.6:
 				seg_img[i][j][0] += 128
 				seg_img[i][j][1] += 128
 				seg_img[i][j][2] += 128
