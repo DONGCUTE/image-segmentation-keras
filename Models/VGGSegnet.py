@@ -19,7 +19,7 @@ def VGGSegnet( n_classes ,  input_height=416, input_width=608 , vgg_level=3):
 
 	x = Conv2D(64, (3, 3), activation='relu', padding='same', name='block1_conv1', data_format='channels_first' )(img_input)
 	x = Conv2D(64, (3, 3), activation='relu', padding='same', name='block1_conv2', data_format='channels_first' )(x)
-	x = MaxPooling2D((4, 4), strides=(4, 4), name='block1_pool', data_format='channels_first' )(x)
+	x = MaxPooling2D((2, 2), strides=(2, 2), name='block1_pool', data_format='channels_first' )(x)
 	f1 = x
 	# Block 2
 	x = Conv2D(128, (3, 3), activation='relu', padding='same', name='block2_conv1', data_format='channels_first' )(x)
